@@ -3,7 +3,7 @@ import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import { feature } from 'topojson-client';
 import usStatesJson from 'us-atlas/states-10m.json';
 
-const ShipmentsMap = ({ shipments, onStateSelect, selectedState }) => {
+const ShipmentsMap = ({ shipments, onStateSelect, selectedState, mapMode }) => {
   const [tooltip, setTooltip] = useState({ show: false, content: '', x: 0, y: 0 });
 
   const getStateColor = (geo) => {
@@ -14,7 +14,11 @@ const ShipmentsMap = ({ shipments, onStateSelect, selectedState }) => {
       return "#1976d2";  // Material-UI primary blue
     }
     
-    const stateShipments = shipments.filter(s => s.originState === stateName);
+    const stateShipments = shipments.filter(s => 
+      mapMode === 'origin' 
+        ? s.originState === stateName
+        : s.destinationState === stateName
+    );
     
     if (stateShipments.length === 0) return "#FFFFFF";
     
@@ -26,7 +30,11 @@ const ShipmentsMap = ({ shipments, onStateSelect, selectedState }) => {
   };
 
   const getShipmentCount = (stateName) => {
-    return shipments.filter(s => s.originState === stateName).length;
+    return shipments.filter(s => 
+      mapMode === 'origin' 
+        ? s.originState === stateName
+        : s.destinationState === stateName
+    ).length;
   };
 
   // Convert TopoJSON to GeoJSON
@@ -62,19 +70,22 @@ const ShipmentsMap = ({ shipments, onStateSelect, selectedState }) => {
                         fill: getStateColor(geo),
                         outline: "none",
                         stroke: "#CCCCCC",
-                        strokeWidth: 0.75
+                        strokeWidth: 0.75,
+                        cursor: 'pointer'
                       },
                       hover: {
                         fill: getStateColor(geo),
                         outline: "none",
                         stroke: "#999999",
-                        strokeWidth: 1
+                        strokeWidth: 1,
+                        cursor: 'pointer'
                       },
                       pressed: {
                         fill: getStateColor(geo),
                         outline: "none",
                         stroke: "#666666",
-                        strokeWidth: 1
+                        strokeWidth: 1,
+                        cursor: 'pointer'
                       }
                     }}
                   />
@@ -112,7 +123,9 @@ const ShipmentsMap = ({ shipments, onStateSelect, selectedState }) => {
         borderRadius: '4px',
         boxShadow: '0 1px 4px rgba(0,0,0,0.2)'
       }}>
-        <div style={{ fontSize: '12px', marginBottom: '5px' }}>Shipments per State:</div>
+        <div style={{ fontSize: '12px', marginBottom: '5px' }}>
+          {mapMode === 'origin' ? 'Outbound' : 'Inbound'} Shipments per State:
+        </div>
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <div style={{ width: '20px', height: '20px', background: '#FFFFFF', border: '1px solid #CCCCCC', marginRight: '5px' }}></div>

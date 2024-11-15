@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Button, Dialog, Select, MenuItem, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton } from '@mui/material';
+import { Button, Dialog, Select, MenuItem, IconButton, FormControl, RadioGroup, FormControlLabel, Radio, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShipmentForm from './ShipmentForm';
@@ -15,6 +15,7 @@ const Dashboard = () => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [selectedShipment, setSelectedShipment] = useState(null);
   const [selectedState, setSelectedState] = useState(null);
+  const [mapMode, setMapMode] = useState('origin');
 
   const vehicleTypes = [
     'Truck',
@@ -135,9 +136,19 @@ const Dashboard = () => {
       setFilteredShipments(shipments);
     } else {
       setSelectedState(stateName);
-      const filtered = shipments.filter(shipment => shipment.originState === stateName);
+      const filtered = shipments.filter(shipment => 
+        mapMode === 'origin' 
+          ? shipment.originState === stateName
+          : shipment.destinationState === stateName
+      );
       setFilteredShipments(filtered);
     }
+  };
+
+  const handleMapModeChange = (event) => {
+    setMapMode(event.target.value);
+    setSelectedState(null);
+    setFilteredShipments(shipments);
   };
 
   const handleEdit = (shipment) => {
@@ -146,7 +157,12 @@ const Dashboard = () => {
   };
 
   const handleAdd = () => {
-    const initialData = selectedState ? { originState: selectedState } : null;
+    let initialData = null;
+    if (selectedState) {
+      initialData = mapMode === 'origin' 
+        ? { originState: selectedState }
+        : { destinationState: selectedState };
+    }
     setSelectedShipment(initialData);
     setOpen(true);
   };
@@ -212,10 +228,30 @@ const Dashboard = () => {
       
       <div className="map-section">
         <h2>Shipment Map</h2>
+        <FormControl component="fieldset" style={{ marginBottom: '1rem' }}>
+          <RadioGroup
+            row
+            name="map-mode"
+            value={mapMode}
+            onChange={handleMapModeChange}
+          >
+            <FormControlLabel 
+              value="origin" 
+              control={<Radio />} 
+              label="Origin States" 
+            />
+            <FormControlLabel 
+              value="destination" 
+              control={<Radio />} 
+              label="Destination States" 
+            />
+          </RadioGroup>
+        </FormControl>
         <ShipmentsMap 
           shipments={shipments} 
           onStateSelect={handleStateSelect}
           selectedState={selectedState}
+          mapMode={mapMode}
         />
       </div>
       
@@ -226,7 +262,7 @@ const Dashboard = () => {
           onCancel={handleClose}
         />
       </Dialog>
-
+      
       <Dialog
         open={deleteDialogOpen}
         onClose={() => setDeleteDialogOpen(false)}
