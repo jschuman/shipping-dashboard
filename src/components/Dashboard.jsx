@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Button, Dialog, Select, MenuItem, IconButton, FormControl, RadioGroup, FormControlLabel, Radio, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { 
+  Button, 
+  Dialog, 
+  Select, 
+  MenuItem, 
+  IconButton, 
+  FormControl, 
+  RadioGroup, 
+  FormControlLabel, 
+  Radio,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShipmentForm from './ShipmentForm';
@@ -173,14 +187,13 @@ const Dashboard = () => {
   };
 
   const handleSave = (shipment) => {
-    let updatedShipment;
     
     if (shipment.id) {
       // Edit existing shipment
-      updatedShipment = updateShipment(shipment);
+      updateShipment(shipment);
     } else {
       // Add new shipment
-      updatedShipment = addShipment(shipment);
+      addShipment(shipment);
     }
 
     // Refresh shipments from database
