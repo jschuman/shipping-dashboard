@@ -1,0 +1,204 @@
+{
+  "shipments": [
+    {
+      "id": 1,
+      "originState": "California",
+      "destinationState": "Texas",
+      "description": "Electronics and Computer Parts",
+      "containerQuantity": 3,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 2,
+      "originState": "New York",
+      "destinationState": "Florida",
+      "description": "Medical Supplies",
+      "containerQuantity": 1,
+      "vehicleType": "airplane"
+    },
+    {
+      "id": 3,
+      "originState": "Washington",
+      "destinationState": "Hawaii",
+      "description": "Agricultural Products",
+      "containerQuantity": 5,
+      "vehicleType": "ship"
+    },
+    {
+      "id": 4,
+      "originState": "Texas",
+      "destinationState": "Illinois",
+      "description": "Automotive Parts",
+      "containerQuantity": 2,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 5,
+      "originState": "California",
+      "destinationState": "Nevada",
+      "description": "Consumer Electronics",
+      "containerQuantity": 4,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 6,
+      "originState": "Michigan",
+      "destinationState": "Ohio",
+      "description": "Auto Manufacturing Equipment",
+      "containerQuantity": 3,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 7,
+      "originState": "Texas",
+      "destinationState": "California",
+      "description": "Oil Industry Equipment",
+      "containerQuantity": 6,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 8,
+      "originState": "Florida",
+      "destinationState": "Georgia",
+      "description": "Citrus Fruits",
+      "containerQuantity": 4,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 9,
+      "originState": "Washington",
+      "destinationState": "Oregon",
+      "description": "Lumber Products",
+      "containerQuantity": 8,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 10,
+      "originState": "New York",
+      "destinationState": "Massachusetts",
+      "description": "Fashion Merchandise",
+      "containerQuantity": 2,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 11,
+      "originState": "Illinois",
+      "destinationState": "Wisconsin",
+      "description": "Manufacturing Equipment",
+      "containerQuantity": 3,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 12,
+      "originState": "California",
+      "destinationState": "Arizona",
+      "description": "Solar Panels",
+      "containerQuantity": 5,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 13,
+      "originState": "Texas",
+      "destinationState": "Louisiana",
+      "description": "Petroleum Products",
+      "containerQuantity": 4,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 14,
+      "originState": "Florida",
+      "destinationState": "Puerto Rico",
+      "description": "Construction Materials",
+      "containerQuantity": 6,
+      "vehicleType": "ship"
+    },
+    {
+      "id": 15,
+      "originState": "Nevada",
+      "destinationState": "California",
+      "description": "Mining Equipment",
+      "containerQuantity": 3,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 16,
+      "originState": "Massachusetts",
+      "destinationState": "New Hampshire",
+      "description": "Medical Devices",
+      "containerQuantity": 1,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 17,
+      "originState": "California",
+      "destinationState": "Washington",
+      "description": "Wine and Spirits",
+      "containerQuantity": 2,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 18,
+      "originState": "Texas",
+      "destinationState": "Oklahoma",
+      "description": "Wind Turbine Parts",
+      "containerQuantity": 7,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 19,
+      "originState": "Michigan",
+      "destinationState": "Indiana",
+      "description": "Automotive Components",
+      "containerQuantity": 4,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 20,
+      "originState": "Georgia",
+      "destinationState": "South Carolina",
+      "description": "Textile Materials",
+      "containerQuantity": 3,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 21,
+      "originState": "California",
+      "destinationState": "Oregon",
+      "description": "Technology Equipment",
+      "containerQuantity": 2,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 22,
+      "originState": "New York",
+      "destinationState": "New Jersey",
+      "description": "Pharmaceutical Supplies",
+      "containerQuantity": 1,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 23,
+      "originState": "Texas",
+      "destinationState": "New Mexico",
+      "description": "Energy Equipment",
+      "containerQuantity": 5,
+      "vehicleType": "truck"
+    },
+    {
+      "id": 24,
+      "originState": "Washington",
+      "destinationState": "Alaska",
+      "description": "Seafood Products",
+      "containerQuantity": 3,
+      "vehicleType": "ship"
+    },
+    {
+      "id": 25,
+      "originState": "Florida",
+      "destinationState": "Alabama",
+      "description": "Agricultural Equipment",
+      "containerQuantity": 4,
+      "vehicleType": "truck"
+    }
+  ]
+} 
