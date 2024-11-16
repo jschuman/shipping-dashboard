@@ -121,9 +121,9 @@ const ShipmentForm = ({ shipment, onSave, onCancel }) => {
             required
             label="Vehicle Type"
           >
-            <MenuItem value="truck">Truck</MenuItem>
-            <MenuItem value="ship">Ship</MenuItem>
-            <MenuItem value="airplane">Airplane</MenuItem>
+            <MenuItem value="Truck">Truck</MenuItem>
+            <MenuItem value="Ship">Ship</MenuItem>
+            <MenuItem value="Airplane">Airplane</MenuItem>
           </Select>
         </FormControl>
         <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
