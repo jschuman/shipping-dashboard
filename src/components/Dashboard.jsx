@@ -21,6 +21,7 @@ import ShipmentForm from './ShipmentForm';
 import ShipmentsMap from './ShipmentsMap';
 import { getShipments, addShipment, updateShipment, deleteShipment } from '../services/db';
 import './Dashboard.css';
+import ShipmentAnimation from './ShipmentAnimation';
 
 const Dashboard = () => {
   const [shipments, setShipments] = useState([]);
@@ -30,6 +31,8 @@ const Dashboard = () => {
   const [selectedShipment, setSelectedShipment] = useState(null);
   const [selectedState, setSelectedState] = useState(null);
   const [mapMode, setMapMode] = useState('origin');
+  const [showAnimation, setShowAnimation] = useState(false);
+  const [animationVehicle, setAnimationVehicle] = useState(null);
 
   const vehicleTypes = [
     'Truck',
@@ -187,22 +190,24 @@ const Dashboard = () => {
   };
 
   const handleSave = (shipment) => {
-    
     if (shipment.id) {
-      // Edit existing shipment
       updateShipment(shipment);
     } else {
-      // Add new shipment
       addShipment(shipment);
+      setAnimationVehicle(shipment.vehicleType);
+      setShowAnimation(true);
+      setTimeout(() => setShowAnimation(false), 2000);
     }
 
-    // Refresh shipments from database
     const updatedShipments = getShipments();
     setShipments(updatedShipments);
     
-    // Update filtered shipments based on selected state
     if (selectedState) {
-      setFilteredShipments(updatedShipments.filter(s => s.originState === selectedState));
+      setFilteredShipments(updatedShipments.filter(s => 
+        mapMode === 'origin' 
+          ? s.originState === selectedState
+          : s.destinationState === selectedState
+      ));
     } else {
       setFilteredShipments(updatedShipments);
     }
@@ -260,12 +265,18 @@ const Dashboard = () => {
             />
           </RadioGroup>
         </FormControl>
-        <ShipmentsMap 
-          shipments={shipments} 
-          onStateSelect={handleStateSelect}
-          selectedState={selectedState}
-          mapMode={mapMode}
-        />
+        <div style={{ position: 'relative' }}>
+          <ShipmentsMap 
+            shipments={shipments} 
+            onStateSelect={handleStateSelect}
+            selectedState={selectedState}
+            mapMode={mapMode}
+          />
+          <ShipmentAnimation 
+            vehicleType={animationVehicle}
+            show={showAnimation}
+          />
+        </div>
       </div>
       
       <Dialog open={open} onClose={handleClose}>
