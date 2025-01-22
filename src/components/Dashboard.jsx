@@ -126,6 +126,8 @@ const Dashboard = () => {
       field: 'actions',
       headerName: 'Actions',
       width: 100,
+      sortable: false,
+      filterable: false,
       renderCell: (params) => (
         <div style={{ display: 'flex', gap: '4px' }}>
           <IconButton
